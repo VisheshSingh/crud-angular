@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Product } from "../../models/Product";
+import { ProductService } from "../../services/product.service";
 
 @Component({
   selector: "app-product",
@@ -9,28 +10,9 @@ import { Product } from "../../models/Product";
 export class ProductComponent implements OnInit {
   products: Product[];
 
-  constructor() {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.products = [
-      {
-        id: 1,
-        name: "Scissors",
-        description: "use this to cut stuff",
-        price: 4.99
-      },
-      {
-        id: 2,
-        name: "Steak Knives",
-        description: "use this to eat food with",
-        price: 10.99
-      },
-      {
-        id: 3,
-        name: "Shot Glass",
-        description: "use this to take shots",
-        price: 5.99
-      }
-    ];
+    this.products = this.productService.getProductsFromData();
   }
 }
