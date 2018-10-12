@@ -14,4 +14,8 @@ export class ProductService {
     console.log(this.pItems);
     return this.pItems;
   }
+
+  addProduct(product: Product) {
+    this.pItems.push(product);
+  }
 }
